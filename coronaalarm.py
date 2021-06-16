@@ -1,5 +1,6 @@
 from m5stack import lcd #Basis M5StickC
 from m5stack import M5Led
+import time
 import imu #bibliotek til at bruge beværgelsessensoren
 import fusion #en oversætter til de rå sensordata
 import funktioner #nogle funktioner vi skal bruge
@@ -33,6 +34,7 @@ while True:
             state = "pause"
     if state == "monitor":
         #opdater sensordata
+        time.sleep_ms(50)
         myfilter.update(sensor.acceleration, sensor.gyro)
         pitch = int(myfilter.pitch)
         roll = int(myfilter.roll)
